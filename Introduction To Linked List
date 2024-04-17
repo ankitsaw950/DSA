@@ -1,0 +1,25 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+class Node {
+
+public:
+  int data;
+  int i;
+  Node *next;
+  Node() : data(0), next(nullptr) {}
+  Node(int x) : data(x), next(nullptr) {}
+  Node(int x, Node *next) : data(x), next(next) {}
+};
+
+Node *constructLL(vector<int> &arr) {
+  Node *head = NULL;
+  int n = arr.size();
+  for (int i = 0; i < n; i++) {
+    Node *w = new Node(arr[n - 1 - i], head);
+    head = w;
+  }
+
+  return head;
+}
