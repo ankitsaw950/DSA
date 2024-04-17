@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+class Node {
+
+public:
+  int data;
+  Node *next;
+  Node() : data(0), next(nullptr) {}
+  Node(int x) : data(x), next(nullptr) {}
+  Node(int x, Node *next) : data(x), next(next) {}
+};
+
+Node *insertAtFirst(Node *list, int newValue) {
+  Node *head;
+  if (list == NULL || list->next == NULL) {
+    Node *x = new Node(newValue);
+    list = x;
+  } else {
+    Node *w = new Node(newValue);
+    w->next = list;
+    list = w;
+  }
+  return list;
+}
