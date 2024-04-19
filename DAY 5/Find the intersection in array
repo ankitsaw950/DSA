@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+void print(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+}
+
+void intersection(int arr[], int n, int brr[], int m)
+{
+    int crr[m];
+    int k = 0;
+    for (int i = 0; i < n; i++)
+    {
+ 
+        for (int j = 0; j < m; j++)
+        {
+            if (arr[i] == brr[j])
+            {
+                
+                crr[k] = arr[i];
+               // cout<<crr[k]<<" ";
+                arr[i] = -1;
+                k++;
+                break;
+            }
+        }
+    }
+    cout<<endl;
+    print(crr, k);
+}
+
+int main()
+{
+   
+    int a[5] = {1,2,4,3,4};
+    int b[4] = {3,4,5,4};
+    intersection(a,5,b,4);
+
+    return 0;
+}
