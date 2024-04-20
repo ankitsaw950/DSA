@@ -1,0 +1,37 @@
+#include <vector>
+
+class Queue {
+    int front, rear;
+    std::vector<int> arr;
+
+public:
+    Queue(int maxSize = 100001) : front(0), rear(0) {
+        arr.resize(maxSize); // Initialize the vector with the specified size
+    }
+
+    // Enqueue (add) element 'e' at the end of the queue.
+    void enqueue(int e) {
+        if (rear < arr.size()) {
+            arr[rear++] = e;
+        } else {
+            // Handle error: queue is full
+            // You might want to throw an exception or resize the vector here
+        }
+    }
+
+    // Dequeue (retrieve) the element from the front of the queue.
+    int dequeue() {
+        if (front == rear) {
+            // Queue is empty
+            return -1; // Or throw an exception
+        } else {
+            int ans = arr[front++];
+            if (front == rear) {
+                // Reset front and rear when queue becomes empty
+                front = 0;
+                rear = 0;
+            }
+            return ans;
+        }
+    }
+};
