@@ -1,0 +1,49 @@
+class Stack {
+int front , rear , size;
+queue<int> q;
+
+   public:
+    Stack() {
+     size =0;
+    }
+
+    /*----------------- Public Functions of Stack -----------------*/
+
+    int getSize() {
+return q.size();
+    }
+
+    bool isEmpty() {
+     if(getSize() == 0)
+     return true;
+    }
+
+    void push(int element) {
+     int n= q.size();
+     q.push(element);
+     for(int i=0;i<n;i++)
+     {
+         q.push(q.front());
+         q.pop();
+     }
+    }
+
+    int pop() {
+   if(isEmpty())
+   return -1;
+
+   else
+   {
+       int n=q.front();
+       q.pop();
+       return n;
+   }
+    }
+
+    int top() {
+        if(isEmpty())
+        return -1;
+
+        return q.front();
+    }
+};
