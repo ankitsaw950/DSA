@@ -1,0 +1,60 @@
+#include<stack>
+class MyQueue {
+    stack<int> s1;
+    stack<int> s2;
+    int count;
+public:
+    MyQueue() {
+        count =0;
+    }
+    
+    void push(int x) {
+    s1.push(x);
+    count++;
+    }
+    
+    int pop() {
+       if(s2.empty())
+       {
+       while(!s1.empty())
+       {
+        int d = s1.top();
+        s1.pop();
+        s2.push(d);
+       }
+       }
+     count--;
+     int x = s2.top();
+     s2.pop();
+       return x;
+    }
+    
+    int peek() {
+      if(s2.empty())
+      {
+       while(!s1.empty())
+       {
+        int d = s1.top();
+        s1.pop();
+        s2.push(d);
+       }
+      }
+       return s2.top();
+    }
+    
+    bool empty() {
+       if(count == 0)
+       return true;
+       else
+       return false;
+    }
+};
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue* obj = new MyQueue();
+ * obj->push(x);
+ * int param_2 = obj->pop();
+ * int param_3 = obj->peek();
+ * bool param_4 = obj->empty();
+ */
